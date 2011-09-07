@@ -65,18 +65,16 @@
 			
 			//show when input is focused
 		    $this.focus(function() {
+		        $this.blur(); //Remove focus so mobile soft keypad does not open
 		        picker.show('slow');
 		    });
 			
 			//hide when date selected
 			$( '.ui-datepicker-calendar a' ).live('click', function() { 
+				$this.val(picker.val());
 			        picker.hide('slow');
 			});
 			
-			//update when input changes
-			$this.change(function(){
-				picker.datepicker("setDate", $(this).val());
-			}); 
 			
 		});	
 	});
