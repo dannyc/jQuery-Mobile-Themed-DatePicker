@@ -65,18 +65,15 @@
 			
 			//show when input is focused
 		    $this.focus(function() {
+		    	$this.blur(); //Prevents soft keyboard from opening
 		        picker.show('slow');
 		    });
 			
 			//hide when date selected
 			$( '.ui-datepicker-calendar a' ).live('click', function() { 
+				$this.val(picker.val()); //Sets the date on link click
 			        picker.hide('slow');
 			});
-			
-			//update when input changes
-			$this.change(function(){
-				picker.datepicker("setDate", $(this).val());
-			}); 
 			
 		});	
 	});
